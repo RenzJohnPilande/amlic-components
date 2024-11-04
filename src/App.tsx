@@ -7,6 +7,7 @@ import { Recruitment } from "./pages/Recruitment";
 import { Payroll } from "./pages/Payroll";
 import { Loan } from "./pages/Loan";
 import { Settings } from "./pages/Settings";
+import "./App.css";
 
 function App() {
   return (
