@@ -32,12 +32,12 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   return (
     <div className="rounded-md border capitalize">
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-[#F5F6FA]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className="p-4">
                     {header.isPlaceholder
                       ? null
                       : flexRender(header.column.columnDef.header, header.getContext())}
@@ -52,7 +52,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell key={cell.id} className="p-4">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}

@@ -6,7 +6,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <SidebarProvider>
       <AppSidebar />
       <main className="w-full">
-        <SidebarTrigger />
+        <SidebarTrigger className="lg:hidden" />
         {children}
       </main>
     </SidebarProvider>

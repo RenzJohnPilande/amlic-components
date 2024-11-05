@@ -1,6 +1,7 @@
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -11,47 +12,72 @@ import {
 } from "@/components/ui/sidebar";
 import { useEffect, useState } from "react";
 import {
-  MdDashboard,
-  MdGroup,
-  MdGroupAdd,
-  MdInventory,
-  MdList,
-  MdLogout,
-  MdPayment,
-  MdSettings,
+  MdAttachMoney,
+  MdOutlineDashboardCustomize,
+  MdOutlineLogout,
+  MdOutlinePeople,
+  MdOutlinePermDataSetting,
+  MdOutlinePoll,
+  MdOutlineSettings,
+  MdOutlineSpaceDashboard,
+  MdPendingActions,
 } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 
-const items = [
+const menu = [
   {
     title: "Dashboard",
     url: "/",
-    icon: MdDashboard,
+    icon: MdOutlineSpaceDashboard,
+  },
+];
+
+const inventory = [
+  {
+    title: "Products",
+    url: "/products",
+    icon: MdOutlineDashboardCustomize,
   },
   {
-    title: "Inventory",
-    url: "/inventory",
-    icon: MdInventory,
+    title: "Projects",
+    url: "/projects",
+    icon: MdOutlinePermDataSetting,
   },
+  {
+    title: "Stocks",
+    url: "/stocks",
+    icon: MdOutlinePoll,
+  },
+];
+
+const hr = [
   {
     title: "Employee",
     url: "/employees",
-    icon: MdGroup,
-  },
-  {
-    title: "Recruitment",
-    url: "/recruitment",
-    icon: MdGroupAdd,
+    icon: MdOutlinePeople,
   },
   {
     title: "Payroll",
     url: "/payroll",
-    icon: MdPayment,
+    icon: MdPendingActions,
   },
   {
     title: "Loan",
     url: "/loan",
-    icon: MdList,
+    icon: MdAttachMoney,
+  },
+];
+
+const settings = [
+  {
+    title: "Settings",
+    url: "/settings",
+    icon: MdOutlineSettings,
+  },
+  {
+    title: "Logout",
+    url: "/logout",
+    icon: MdOutlineLogout,
   },
 ];
 
@@ -63,21 +89,22 @@ export function AppSidebar() {
     setActiveLink(location.pathname);
   }, [location]);
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="bg-[#1E2530]">
+      <div className="flex justify-center p-4">
+        <img src="/images/AMLIC-Logo.png" className="w-[130px] h-[61]" />
+      </div>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent className="mt-2 mb-5">
             <SidebarMenu>
-              {items.map((item) => (
+              {menu.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
                       to={item.url}
                       className={
-                        activeLink === item.url
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-accent-foreground"
-                          : ""
+                        activeLink === item.url ? "bg-sidebar-accent text-[#1E2530]" : "text-white"
                       }
                     >
                       <item.icon />
@@ -89,36 +116,75 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
           <SidebarSeparator className="mb-5" />
-          <SidebarGroupLabel>Settings</SidebarGroupLabel>
-          <SidebarGroupContent className="my-2">
+          <SidebarGroupLabel>Inventory</SidebarGroupLabel>
+          <SidebarGroupContent className="mt-2 mb-5">
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link
-                    to={"/settings"}
-                    className={
-                      activeLink === "/settings"
-                        ? "bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-accent-foreground"
-                        : ""
-                    }
-                  >
-                    <MdSettings />
-                    <span>Settings</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link to={"/"}>
-                    <MdLogout />
-                    <span>Logout</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              {inventory.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link
+                      to={item.url}
+                      className={
+                        activeLink === item.url ? "bg-sidebar-accent text-[#1E2530]" : "text-white"
+                      }
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+          <SidebarSeparator className="mb-5" />
+          <SidebarGroupLabel>HRIS</SidebarGroupLabel>
+          <SidebarGroupContent className="mt-2 mb-5">
+            <SidebarMenu>
+              {hr.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link
+                      to={item.url}
+                      className={
+                        activeLink === item.url ? "bg-sidebar-accent text-[#1E2530]" : "text-white"
+                      }
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+          <SidebarSeparator className="mb-5" />
+          <SidebarGroupLabel>HRIS</SidebarGroupLabel>
+          <SidebarGroupContent className="mt-2 mb-5">
+            <SidebarMenu>
+              {settings.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link
+                      to={item.url}
+                      className={
+                        activeLink === item.url
+                          ? "bg-sidebar-accent text-[#1E2530] font-medium"
+                          : "text-white"
+                      }
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <div className="flex p-4">
+        <p className="text-white text-[14px] font-normal">Powered by Webworks</p>
+      </div>
     </Sidebar>
   );
 }
