@@ -27,6 +27,16 @@ import { PrimaryButton } from "@/components/primary-button";
 import { IconButton } from "@/components/icon-button";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { RoleContainer } from "@/components/role-container";
 
 async function getData(): Promise<Users[]> {
   return [
@@ -114,7 +124,70 @@ export const Employee = () => {
               <input type="text" placeholder="Search" className="border-0 outline-none w-[160px]" />
             </div>
             <SecondaryButton label="Filters" icon={<MdOutlineFilterList />} />
-            <PrimaryButton label="Add Employee" icon={<MdAddCircleOutline />} />
+            <Dialog>
+              <DialogTrigger>
+                <PrimaryButton label="Add Employee" icon={<MdAddCircleOutline />} />
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader className="border-b border-[#71717A]">
+                  <DialogTitle className="text-[40px] semibold">Add Employee</DialogTitle>
+                </DialogHeader>
+                <div className="flex grid grid-cols-2 gap-2">
+                  <div className="flex flex-wrap gap-8">
+                    <div className="flex flex-wrap w-full pe-5 gap-3">
+                      <Label className="text-[16px]" htmlFor="name">
+                        Name
+                      </Label>
+                      <Input className="w-full" id="name" type="text" />
+                    </div>
+                    <div className="flex flex-wrap w-full pe-5 gap-3">
+                      <Label className="text-[16px]" htmlFor="email">
+                        Email
+                      </Label>
+                      <Input className="w-full" id="email" type="email" />
+                    </div>
+                    <div className="flex flex-wrap w-full pe-5 gap-3">
+                      <Label className="text-[16px]" htmlFor="password">
+                        Password
+                      </Label>
+                      <Input className="w-full" id="password" type="password" />
+                    </div>
+                    <div className="flex flex-wrap w-full pe-5 gap-3">
+                      <Label className="text-[16px]" htmlFor="contact">
+                        Contact No.
+                      </Label>
+                      <Input className="w-full" id="contact" type="text" />
+                    </div>
+                    <div className="flex flex-wrap w-full pe-5 gap-3">
+                      <Label className="text-[16px]" htmlFor="position">
+                        Position
+                      </Label>
+                      <Input className="w-full" id="position" type="text" />
+                    </div>
+                    <div className="flex gap-2">
+                      <SecondaryButton label="Cancel" />
+                      <PrimaryButton label="Done" />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap justify-start items-start h-max gap-4">
+                    <h2 className="font-medium text-[24px]">Profile picture</h2>
+                    <img
+                      src="https://github.com/shadcn.png"
+                      className="rounded-full w-[167px] h-[167px]"
+                    />
+                    <Input type="file" className="text-xs border-zinc-300" />
+                    <div>
+                      <h3>Role</h3>
+                      <div className="flex flex-wrap py-4 gap-4">
+                        <RoleContainer label="admin" />
+                        <RoleContainer label="user management" />
+                        <RoleContainer label="candidate management" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         <div>
