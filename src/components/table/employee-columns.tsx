@@ -8,8 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -101,31 +99,31 @@ export const columns: ColumnDef<Users>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
-      const payment = row.original;
-
+    cell: ({}) => {
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <MdOutlinePeople /> View profile
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <MdCreate />
-              Edit details
-            </DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600 hover:text-red-600 focus:text-red-600">
-              <MdOutlineDelete />
-              Delete employee
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex justify-end">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <MdOutlinePeople /> View profile
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <MdCreate />
+                Edit details
+              </DropdownMenuItem>
+              <DropdownMenuItem className="text-red-600 hover:text-red-600 focus:text-red-600">
+                <MdOutlineDelete />
+                Delete employee
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       );
     },
   },
