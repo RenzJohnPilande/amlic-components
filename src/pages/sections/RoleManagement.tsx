@@ -111,9 +111,6 @@ export const RoleManagement = ({ activeTab, onTabChange }: RoleManagementProps) 
                   <div className="flex flex-wrap w-full gap-3">
                     <Label className="text-sm">Role Name</Label>
                     <Input type="text" className="border-[#4A4A68]" />
-                    <div className="flex w-full justify-end">
-                      <PrimaryButton label="Add" icon={<MdAddCircleOutline />} />
-                    </div>
                   </div>
                   <div className="flex flex-wrap w-full gap-3">
                     <Label className="text-sm">Members</Label>
