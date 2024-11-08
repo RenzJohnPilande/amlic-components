@@ -17,7 +17,7 @@ export const RoleContainer: React.FC<RoleContainerProps> = ({ label }) => {
   const randomColor = generateRandomColor();
   console.log(randomColor);
   return (
-    <div className="border border-[#402A0D] text-[#402A0D] rounded-full px-4 py-1 text-[16px] capitalize">
+    <div className="border border-[#402A0D] text-[#402A0D] rounded-full px-4 py-1 text-sm capitalize">
       {label}
     </div>
   );

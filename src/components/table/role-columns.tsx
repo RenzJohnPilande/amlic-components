@@ -21,7 +21,7 @@ export const rolecolumns: ColumnDef<Roles>[] = [
     accessorKey: "roleName",
     header: ({}) => (
       <div>
-        <h3 className="text-[#0E0E2C] font-semibold text-[16px]">Role</h3>
+        <h3 className="text-[#0E0E2C] font-semibold text-sm">Role</h3>
       </div>
     ),
     cell: ({ row }) => {
@@ -30,7 +30,7 @@ export const rolecolumns: ColumnDef<Roles>[] = [
           <div className="flex items-center gap-4 py-4">
             <div className="p-2 bg-red-600 rounded-full"></div>
             <div>
-              <h2 className="text-[16px] text-[#0E0E2C] capitalize">{row.original.roleName}</h2>
+              <h2 className="text-sm text-[#0E0E2C] capitalize">{row.original.roleName}</h2>
             </div>
           </div>
           <div className="flex">

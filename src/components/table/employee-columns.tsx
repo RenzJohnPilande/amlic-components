@@ -49,7 +49,7 @@ export const columns: ColumnDef<Users>[] = [
     accessorKey: "username",
     header: ({}) => (
       <div>
-        <h3 className="text-[#0E0E2C] font-semibold text-[16px]">Username</h3>
+        <h3 className="text-[#0E0E2C] font-semibold text-sm capitalize">Name</h3>
       </div>
     ),
     cell: ({ row }) => (
@@ -59,7 +59,7 @@ export const columns: ColumnDef<Users>[] = [
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div>
-          <h2 className="text-[16px] text-[#0E0E2C] capitalize">{row.original.username}</h2>
+          <h2 className="text-sm text-[#0E0E2C] capitalize">{row.original.username}</h2>
           <h1 className="text-[14px] text-[#71717A]">{row.original.email}</h1>
         </div>
       </div>
@@ -69,7 +69,7 @@ export const columns: ColumnDef<Users>[] = [
     accessorKey: "position",
     header: ({}) => (
       <div>
-        <h3 className="text-[#0E0E2C] font-semibold text-[16px]">Position</h3>
+        <h3 className="text-[#0E0E2C] font-semibold text-sm">Position</h3>
       </div>
     ),
   },
@@ -77,7 +77,7 @@ export const columns: ColumnDef<Users>[] = [
     accessorKey: "contactNumber",
     header: ({}) => (
       <div>
-        <h3 className="text-[#0E0E2C] font-semibold text-[16px]">Contact No.</h3>
+        <h3 className="text-[#0E0E2C] font-semibold text-sm">Contact No.</h3>
       </div>
     ),
   },
@@ -85,7 +85,7 @@ export const columns: ColumnDef<Users>[] = [
     accessorKey: "userRole",
     header: ({}) => (
       <div>
-        <h3 className="text-[#0E0E2C] font-semibold text-[16px]">User Role</h3>
+        <h3 className="text-[#0E0E2C] font-semibold text-sm">User Role</h3>
       </div>
     ),
   },
@@ -93,7 +93,7 @@ export const columns: ColumnDef<Users>[] = [
     accessorKey: "dateAdded",
     header: ({}) => (
       <div>
-        <h3 className="text-[#0E0E2C] font-semibold text-[16px]">Date Added</h3>
+        <h3 className="text-[#0E0E2C] font-semibold text-sm">Date Added</h3>
       </div>
     ),
   },

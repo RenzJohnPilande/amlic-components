@@ -18,6 +18,7 @@ import {
 import {
   MdAddCircleOutline,
   MdHome,
+  MdKeyboardArrowRight,
   MdOutlineArrowDropDown,
   MdOutlineFilterList,
   MdSearch,
@@ -27,16 +28,10 @@ import { PrimaryButton } from "@/components/primary-button";
 import { IconButton } from "@/components/icon-button";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { RoleContainer } from "@/components/role-container";
+import { NextButton } from "@/components/NextButton";
 
 async function getData(): Promise<Users[]> {
   return [
@@ -84,19 +79,19 @@ export const UserManagement = ({ activeTab, onTabChange }: UserManagementProps) 
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="text-[16px] text-[#0E0E2C]">
+              <BreadcrumbLink href="/" className="text-sm text-[#0E0E2C]">
                 <MdHome />
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/components" className="text-[16px] text-[#0E0E2C]">
+              <BreadcrumbLink href="/components" className="text-sm text-[#0E0E2C]">
                 HRIS
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-[16px] font-semibold">Employee</BreadcrumbPage>
+              <BreadcrumbPage className="text-sm font-semibold">Employee</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -106,7 +101,7 @@ export const UserManagement = ({ activeTab, onTabChange }: UserManagementProps) 
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="">
-            <p className="font-medium text-[16px] text-[#0E0E2C]">Jane Doe</p>
+            <p className="font-medium text-sm text-[#0E0E2C]">Jane Doe</p>
             <p className="text-[14px] text-[#71717A]">Ceo</p>
           </div>
           <div className="flex items-center justify-center border rounded-full [w-20px h-[20px]">
@@ -140,63 +135,126 @@ export const UserManagement = ({ activeTab, onTabChange }: UserManagementProps) 
             <SecondaryButton label="Filters" icon={<MdOutlineFilterList />} />
             <Dialog>
               <DialogTrigger>
-                <PrimaryButton label="Add Employee" icon={<MdAddCircleOutline />} />
+                <PrimaryButton label="Add Users" icon={<MdAddCircleOutline />} />
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader className="border-b border-[#71717A]">
-                  <DialogTitle className="text-[40px] semibold">Add Employee</DialogTitle>
-                </DialogHeader>
-                <div className="flex grid grid-cols-2 gap-2">
-                  <div className="flex flex-wrap gap-8">
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="name">
-                        Name
-                      </Label>
-                      <Input className="w-full" id="name" type="text" />
+                <div className="flex flex-wrap w-full justify-center items-center gap-2">
+                  <div className="flex flex-col items-center justify-center py-3">
+                    <h1 className="text-[#0E0E2C] text-[24px] font-semibold">Add Users</h1>
+                    <h2 className="text-[#0E0E2C] text-sm">
+                      Fill up all the fields to proceed to other tab.
+                    </h2>
+                  </div>
+                  <div className="flex flex-wrap justify-center gap-4 pb-5">
+                    <div className="flex justify-center items-center gap-3">
+                      <div className="flex gap-1">
+                        <p className="flex items-center justify-center w-[33px] h-[33px] rounded-full border border-[#0E0E2C] text-[#0E0E2C] text-sm">
+                          1
+                        </p>
+                        <p className="flex items-center justify-center capitalize text-[#0E0E2C] text-sm">
+                          personal
+                        </p>
+                      </div>
+                      <div className="flex gap-1">
+                        <hr className="border-[#71717A] w-[60px]" />
+                      </div>
+                      <div className="flex gap-1">
+                        <p className="flex items-center justify-center w-[33px] h-[33px] rounded-full border border-[#0E0E2C] text-[#0E0E2C] text-sm">
+                          2
+                        </p>
+                        <p className="flex items-center justify-center capitalize text-[#0E0E2C] text-sm">
+                          permission
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="email">
-                        Email
-                      </Label>
-                      <Input className="w-full" id="email" type="email" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="password">
-                        Password
-                      </Label>
-                      <Input className="w-full" id="password" type="password" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="contact">
-                        Contact No.
-                      </Label>
-                      <Input className="w-full" id="contact" type="text" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="position">
-                        Position
-                      </Label>
-                      <Input className="w-full" id="position" type="text" />
-                    </div>
-                    <div className="flex gap-2">
-                      <SecondaryButton label="Cancel" />
-                      <PrimaryButton label="Done" />
+                    <div className="flex items-center justify-center w-full max-w-[300px]">
+                      <label
+                        htmlFor="dropzone-file"
+                        className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                      >
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg
+                            className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 20 16"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                            />
+                          </svg>
+                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                            <span className="font-semibold">Click to upload</span> or drag and drop
+                          </p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                            SVG, PNG, JPG or GIF (MAX. 800x400px)
+                          </p>
+                        </div>
+                        <input id="dropzone-file" type="file" className="hidden" />
+                      </label>
                     </div>
                   </div>
-                  <div className="flex flex-wrap justify-start items-start h-max gap-4">
-                    <h2 className="font-medium text-[24px]">Profile picture</h2>
-                    <img
-                      src="https://github.com/shadcn.png"
-                      className="rounded-full w-[167px] h-[167px]"
-                    />
-                    <Input type="file" className="text-xs border-zinc-300" />
-                    <div>
-                      <h3>Role</h3>
-                      <div className="flex flex-wrap py-4 gap-4">
-                        <RoleContainer label="admin" />
-                        <RoleContainer label="user management" />
-                        <RoleContainer label="candidate management" />
+                  <div className="flex flex-wrap gap-5 w-full">
+                    <div className="flex w-full grid grid-cols-2 gap-3">
+                      <div className="flex flex-wrap w-full gap-3">
+                        <Label className="text-sm" htmlFor="name">
+                          Name
+                        </Label>
+                        <Input className="w-full border-[#71717A]" id="name" type="text" />
                       </div>
+                      <div className="flex flex-wrap w-full gap-3">
+                        <Label className="text-sm" htmlFor="email">
+                          Email
+                        </Label>
+                        <Input className="w-full border-[#71717A]" id="email" type="email" />
+                      </div>
+                      <div className="flex flex-wrap w-full gap-3">
+                        <Label className="text-sm" htmlFor="contact">
+                          Contact No.
+                        </Label>
+                        <Input className="w-full border-[#71717A]" id="contact" type="text" />
+                      </div>
+                      <div className="flex flex-wrap w-full gap-3">
+                        <Label className="text-sm">Position</Label>
+                        <Select>
+                          <SelectTrigger className="border-[#71717A]">
+                            <SelectValue placeholder="" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="light">Light</SelectItem>
+                            <SelectItem value="dark">Dark</SelectItem>
+                            <SelectItem value="system">System</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap w-full gap-2">
+                      <Label className="text-sm">Department</Label>
+                      <Select>
+                        <SelectTrigger className="border-[#71717A]">
+                          <SelectValue placeholder="" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="light">Light</SelectItem>
+                          <SelectItem value="dark">Dark</SelectItem>
+                          <SelectItem value="system">System</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex flex-wrap w-full gap-2">
+                      <Label className="text-sm" htmlFor="password">
+                        Password
+                      </Label>
+                      <Input className="w-full border-[#71717A]" id="password" type="password" />
+                    </div>
+                    <div className="flex w-full justify-center gap-5">
+                      <SecondaryButton label="Cancel" />
+                      <NextButton label="Next" icon={<MdKeyboardArrowRight />} />
                     </div>
                   </div>
                 </div>

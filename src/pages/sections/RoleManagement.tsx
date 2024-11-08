@@ -11,10 +11,8 @@ import {
   MdHome,
   MdOutlineAddModerator,
   MdOutlineArrowDropDown,
-  MdOutlineFilterList,
   MdSearch,
 } from "react-icons/md";
-import { SecondaryButton } from "@/components/secondary-button";
 import { PrimaryButton } from "@/components/primary-button";
 import { MoreHorizontal } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -37,6 +35,7 @@ import {
 import { MdCreate, MdOutlineDelete, MdOutlinePeople } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SecondaryButton } from "@/components/secondary-button";
 
 interface RoleManagementProps {
   activeTab: string;
@@ -50,19 +49,19 @@ export const RoleManagement = ({ activeTab, onTabChange }: RoleManagementProps) 
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="text-[16px] text-[#0E0E2C]">
+              <BreadcrumbLink href="/" className="text-sm text-[#0E0E2C]">
                 <MdHome />
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/components" className="text-[16px] text-[#0E0E2C]">
+              <BreadcrumbLink href="/components" className="text-sm text-[#0E0E2C]">
                 HRIS
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-[16px] font-semibold">Employee</BreadcrumbPage>
+              <BreadcrumbPage className="text-sm font-semibold">Employee</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -72,7 +71,7 @@ export const RoleManagement = ({ activeTab, onTabChange }: RoleManagementProps) 
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="">
-            <p className="font-medium text-[16px] text-[#0E0E2C]">Jane Doe</p>
+            <p className="font-medium text-sm text-[#0E0E2C]">Jane Doe</p>
             <p className="text-[14px] text-[#71717A]">Ceo</p>
           </div>
           <div className="flex items-center justify-center border rounded-full [w-20px h-[20px]">
@@ -105,61 +104,93 @@ export const RoleManagement = ({ activeTab, onTabChange }: RoleManagementProps) 
                 <PrimaryButton label="New Role" icon={<MdOutlineAddModerator />} />
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader className="border-b border-[#71717A]">
-                  <DialogTitle className="text-[40px] semibold">Add Employee</DialogTitle>
-                </DialogHeader>
-                <div className="flex grid grid-cols-2 gap-2">
-                  <div className="flex flex-wrap gap-8">
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="name">
-                        Name
-                      </Label>
-                      <Input className="w-full" id="name" type="text" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="email">
-                        Email
-                      </Label>
-                      <Input className="w-full" id="email" type="email" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="password">
-                        Password
-                      </Label>
-                      <Input className="w-full" id="password" type="password" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="contact">
-                        Contact No.
-                      </Label>
-                      <Input className="w-full" id="contact" type="text" />
-                    </div>
-                    <div className="flex flex-wrap w-full pe-5 gap-3">
-                      <Label className="text-[16px]" htmlFor="position">
-                        Position
-                      </Label>
-                      <Input className="w-full" id="position" type="text" />
-                    </div>
-                    <div className="flex gap-2">
-                      <SecondaryButton label="Cancel" />
-                      <PrimaryButton label="Done" />
+                <div className="flex flex-wrap w-full text-[#0E0E2C] gap-4">
+                  <div className="flex border-b border-[#71717A] py-4 w-full">
+                    <h1 className="text-xl font-semibold">Create new role</h1>
+                  </div>
+                  <div className="flex flex-wrap w-full gap-3">
+                    <Label className="text-sm">Role Name</Label>
+                    <Input type="text" className="border-[#4A4A68]" />
+                    <div className="flex w-full justify-end">
+                      <PrimaryButton label="Add" icon={<MdAddCircleOutline />} />
                     </div>
                   </div>
-                  <div className="flex flex-wrap justify-start items-start h-max gap-4">
-                    <h2 className="font-medium text-[24px]">Profile picture</h2>
-                    <img
-                      src="https://github.com/shadcn.png"
-                      className="rounded-full w-[167px] h-[167px]"
-                    />
-                    <Input type="file" className="text-xs border-zinc-300" />
-                    <div>
-                      <h3>Role</h3>
-                      <div className="flex flex-wrap py-4 gap-4">
-                        <RoleContainer label="admin" />
-                        <RoleContainer label="user management" />
-                        <RoleContainer label="candidate management" />
+                  <div className="flex flex-wrap w-full gap-3">
+                    <Label className="text-sm">Members</Label>
+                    <div className="flex content-center items-center w-full border px-3 py-2">
+                      <MdSearch className="me-2" />
+                      <input
+                        type="text"
+                        placeholder="Add members by name of email"
+                        className="text-sm border-0 outline-none w-full"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap w-full items-center gap-4 border-b border-[#71717A] pb-4">
+                    <div className="flex flex-wrap justify-between items-center w-full">
+                      <div className="flex items-center gap-4">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col justify-center">
+                          <p className="text-lg font-semibold">Jane Doe</p>
+                          <p className="text-sm text-[#71717A]">janedoe@amlic.com</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center flex-wrap">
+                        <Checkbox />
                       </div>
                     </div>
+                    <div className="flex flex-wrap justify-between items-center w-full">
+                      <div className="flex items-center gap-4">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col justify-center">
+                          <p className="text-lg font-semibold">Jane Doe</p>
+                          <p className="text-sm text-[#71717A]">janedoe@amlic.com</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center flex-wrap">
+                        <Checkbox />
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap justify-between items-center w-full">
+                      <div className="flex items-center gap-4">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col justify-center">
+                          <p className="text-lg font-semibold">Jane Doe</p>
+                          <p className="text-sm text-[#71717A]">janedoe@amlic.com</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center flex-wrap">
+                        <Checkbox />
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap justify-between items-center w-full">
+                      <div className="flex items-center gap-4">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col justify-center">
+                          <p className="text-lg font-semibold">Jane Doe</p>
+                          <p className="text-sm text-[#71717A]">janedoe@amlic.com</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center flex-wrap">
+                        <Checkbox />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex w-full justify-end gap-4">
+                    <SecondaryButton label="Cancel" />
+                    <PrimaryButton label="Done" />
                   </div>
                 </div>
               </DialogContent>
@@ -171,109 +202,59 @@ export const RoleManagement = ({ activeTab, onTabChange }: RoleManagementProps) 
             <h3>Role</h3>
             <h3>User</h3>
           </div>
-          <div className="w-full">
-            <div className="flex justify-between w-full p-4 text-[#0E0E2C]  text-[16px]">
-              <div className="flex items-center gap-4">
-                <div className="rounded-full h-4 w-4 bg-red-600"></div>
-                <p className="font-medium">User Management</p>
-              </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="h-8 w-8 p-0">
-                    <span className="sr-only">Open menu</span>
-                    <MoreHorizontal className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>
-                    <MdOutlinePeople /> View profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <MdCreate />
-                    Edit details
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-red-600 hover:text-red-600 focus:text-red-600">
-                    <MdOutlineDelete />
-                    Delete employee
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+          <div className="flex justify-between w-full p-4 text-[#0E0E2C] text-sm border-b">
+            <div className="flex items-center gap-4">
+              <div className="rounded-full h-4 w-4 bg-red-600"></div>
+              <p className="font-medium">User Management</p>
             </div>
-            <div className="flex flex-col w-full text-[#0E0E2C] bg-[#F5F6FA] text-[16px]">
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can view user records</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can create userss</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can modify users</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can delete users</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <MdOutlinePeople /> View profile
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <MdCreate />
+                  Edit details
+                </DropdownMenuItem>
+                <DropdownMenuItem className="text-red-600 hover:text-red-600 focus:text-red-600">
+                  <MdOutlineDelete />
+                  Delete employee
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-          <div className="w-full">
-            <div className="flex justify-between w-full p-4 text-[#0E0E2C]  text-[16px]">
-              <div className="flex items-center gap-4">
-                <div className="rounded-full h-4 w-4 bg-green-600"></div>
-                <p className="font-medium">Attendance System</p>
-              </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="h-8 w-8 p-0">
-                    <span className="sr-only">Open menu</span>
-                    <MoreHorizontal className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>
-                    <MdOutlinePeople /> View profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <MdCreate />
-                    Edit details
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-red-600 hover:text-red-600 focus:text-red-600">
-                    <MdOutlineDelete />
-                    Delete employee
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+          <div className="flex justify-between w-full p-4 text-[#0E0E2C] text-sm border-b">
+            <div className="flex items-center gap-4">
+              <div className="rounded-full h-4 w-4 bg-green-600"></div>
+              <p className="font-medium">Attendance System</p>
             </div>
-            <div className="flex flex-col w-full text-[#0E0E2C] bg-[#F5F6FA] text-[16px]">
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can view attendance</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can view attendance records</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-              <div className="flex justify-between w-full p-4">
-                <p className="">Can modify attendance</p>
-                <div className="h-6 w-6">
-                  <Checkbox />
-                </div>
-              </div>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <MdOutlinePeople /> View profile
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <MdCreate />
+                  Edit details
+                </DropdownMenuItem>
+                <DropdownMenuItem className="text-red-600 hover:text-red-600 focus:text-red-600">
+                  <MdOutlineDelete />
+                  Delete employee
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
